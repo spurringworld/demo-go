@@ -1,0 +1,28 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  # 此处 metadata.name 的值要和 service 中的 metadata.name 的值保持一致
+  # endpoint 的名称必须和服务的名称相匹配
+  name: hello2
+  # 外部服务服务统一在固定的名称空间中
+  namespace: leon
+subsets:
+  - addresses:
+      # 外部服务 IP 地址
+      # 服务将连接重定向到 endpoint 的 IP 地址
+      - ip: 192.168.31.121
+    ports:
+      # 外部服务端口
+      # endpoint 的目标端口
+      - port: 6662
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # 此处 metadata.name 的值要和 endpoints 中的 metadata.name 的值保持一致
+  name: hello2
+  # 外部服务服务统一在固定的名称空间中
+  namespace: leon
+spec:
+  ports:
+    - port: 6662
