@@ -29,15 +29,21 @@ func main() {
 		fmt.Println("-- " + helloMsg)
 		c.JSON(200, gin.H{
 			"message": helloMsg,
-			"action": "/hello"
+			"action":  "/hello",
+		})
+	})
+	r.POST("/hello", func(c *gin.Context) {
+		fmt.Println("-- " + helloMsg)
+		c.JSON(200, gin.H{
+			"message": helloMsg,
+			"action":  "/hello",
 		})
 	})
 	r.GET("/test", func(c *gin.Context) {
 		fmt.Println("-- " + helloMsg)
 		c.JSON(200, gin.H{
-			"": 
 			"message": helloMsg,
-			"action": "/test"
+			"action":  "/test",
 		})
 	})
 
