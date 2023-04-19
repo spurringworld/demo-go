@@ -27,9 +27,12 @@ func main() {
 
 	r.GET("/hello", func(c *gin.Context) {
 		fmt.Println("-- " + helloMsg)
+
 		c.JSON(200, gin.H{
 			"message": helloMsg,
 			"action":  "/hello",
+			//"yourIp":  c.Request.RemoteAddr,
+			"yourIp": c.RemoteIP(),
 		})
 	})
 	r.POST("/hello", func(c *gin.Context) {
