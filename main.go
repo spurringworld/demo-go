@@ -27,12 +27,15 @@ func main() {
 
 	r.GET("/hello", func(c *gin.Context) {
 		fmt.Println("-- " + helloMsg)
-
+		// 打印header信息
+		// for k, v := range c.Request.Header {
+		// 	fmt.Println(k, v)
+		// }
 		c.JSON(200, gin.H{
-			"message": helloMsg,
-			"action":  "/hello",
-			//"yourIp":  c.Request.RemoteAddr,
-			"yourIp": c.RemoteIP(),
+			"message":  helloMsg,
+			"action":   "/hello",
+			"agentIp":  c.RemoteIP(),
+			"clientIp": c.ClientIP(),
 		})
 	})
 	r.POST("/hello", func(c *gin.Context) {
