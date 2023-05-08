@@ -36,6 +36,7 @@ func main() {
 			"action":   "/hello",
 			"agentIp":  c.RemoteIP(),
 			"clientIp": c.ClientIP(),
+			"header":   c.Request.Header,
 		})
 	})
 	r.POST("/hello", func(c *gin.Context) {
